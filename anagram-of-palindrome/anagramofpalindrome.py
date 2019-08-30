@@ -24,13 +24,61 @@ Examples::
     >>> is_anagram_of_palindrome("arceaceb")
     False
 
+    >>> is_anagram_of_palindrome('Aba')
+    True
 """
+
+def is_anagram_of_palindrome(word):
+    """Is the word an anagram of a palindrome?"""
+
+    seen = {}
+
+    # Count each letter
+
+    for letter in word:
+        seen[letter] = seen.get(letter, 0) + 1
+
+    # It's a palindrome if the number of odd-counts is either 0 or 1
+
+    # seen_an_odd = False
+    # for count in seen.values():
+    #     if count % 2 != 0:
+    #         if seen_an_odd:
+    #             return False
+    #         seen_an_odd = True
+
+    num_odds = 0
+    for count in seen.values():
+        if count % 2 != 0:
+            num_odds += 1
+        if num_odds > 1:
+            return False
+
+    return True
 
 
 def is_anagram_of_palindrome(word):
     """Is the word an anagram of a palindrome?"""
 
- 
+ seen = {}
+
+    # Count each letter
+
+    for letter in word:
+        count = seen.get(letter, 0)
+        seen[letter] = count + 1
+
+    # It's a palindrome if the number of odd-counts is either 0 or 1
+
+    seen_an_odd = False
+
+    for count in seen.values():
+        if count % 2 != 0:
+            if seen_an_odd:
+                return False
+            seen_an_odd = True
+
+    return True
 
 
 
